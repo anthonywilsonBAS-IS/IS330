@@ -20,7 +20,7 @@ CREATE TABLE Pilots (
     FirstName VARCHAR(55),
     LastName VARCHAR(55),
     SectorID INT,
-    UserName VARCHAR(15),
+    CallSign VARCHAR(15),
     PasswordHash VARCHAR(25),
     FOREIGN KEY (SectorID) REFERENCES Sectors(SectorID)
 );
