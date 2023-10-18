@@ -52,7 +52,7 @@ CREATE TABLE Drones (
 CREATE TABLE Maintenances (
     MaintenanceID INT PRIMARY KEY AUTO_INCREMENT,
     DroneID INT,
-	MaintenanceDate INT,
+	MaintenanceDate Date,
 	MaintenanceDescription varchar(255),
     FOREIGN KEY (DroneID) REFERENCES Drones(DroneID)
 );
@@ -64,7 +64,7 @@ CREATE TABLE Assignments (
    LocationID INT,
    MissionDate DATE,
    MissionCompletion BOOLEAN, 
-   MissionCompletionTime Date,
+   MissionCompletionTime TIME,
    Notes VARCHAR(255),
    DroneID INT,
    FlightTime TIME,

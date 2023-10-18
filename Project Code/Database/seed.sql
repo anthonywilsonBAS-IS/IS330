@@ -36,7 +36,7 @@ VALUES ('Drone 001'),
 	   ('Drone 002'),
 	   ('Drone X1'),
 	   ('Drone X2'),
-	   ('Drone Y1'),;
+	   ('Drone Y1');
 
 INSERT INTO Maintenances (MaintenanceDate, MaintenanceDescription)
 VALUES ('2023-09-05', 'Routine maintenance and inspection'),
