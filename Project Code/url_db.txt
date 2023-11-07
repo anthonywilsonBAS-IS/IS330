@@ -1,2 +1,2 @@
-http://localhost/IS330/Project%20Code/backend/index.php
-something
+http://localhost/Project%20Code/backend/index.php
+http://localhost/book_apps/ch21_admin/

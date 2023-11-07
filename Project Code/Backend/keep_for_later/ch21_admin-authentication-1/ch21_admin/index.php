@@ -11,13 +11,14 @@ We want ch21_admin to work, but we ran into issues:
 2) Problem: Redirecting to HTTPs (via the file util/secure_conn.php)
    Solution: Comment out the redirection code
 
-2.5) Problem: Notice: Trying to access array offset on value of type
- bool in C:\xampp\htdocs\book_apps\ch21_admin\model\admin_db.php on line 23
+2.5) Problem: Notice: Trying to access array offset on value of type bool in C:\xampp\htdocs\book_apps\ch21_admin\model\admin_db.php on line 23
 
 3) Problem: Can't log in, don't know password
-   Solution: find a hash for the password we want and injected it into the database
-   as the users save password.
+   Solution: 
+
 */
+
+
 
 // Start session management and include necessary functions
 session_start();
@@ -42,33 +43,27 @@ if (!isset($_SESSION['is_valid_admin'])) {
 // Perform the specified action
 switch($action) {
     case 'login':
-        $callsign = filter_input(INPUT_POST, 'callsign');
+        $email = filter_input(INPUT_POST, 'email');
         $password = filter_input(INPUT_POST, 'password');
-        if (is_valid_admin_login($callsign, $password)) {
+        if (is_valid_admin_login($email, $password)) {
             $_SESSION['is_valid_admin'] = true;
-         //   $_SESSION['currently_logged-in-user_email'] = true;
-         // $_SESSION['is_valid_admin'] = true;
-
-//TODO: exchange email for user id, and store that in the session
-          //  $stmt = $db->query(SELECT * FROM users WHERE email + $email)
-
             include('view/admin_menu.php');
         } else {
             $login_message = 'You must login to view this page.';
             include('view/login.php');
         }
         break;
-        case 'show_admin_menu':
-            include("view/admin_menu.php");
-            break;
-    case 'show_drones':
-        include("view/drones.php");
+    case 'left_off':
+        include("view/left_off.php");
         break;
-    case 'show_assignments':
-        include('view/assignments.php');
+    case 'show_admin_menu':
+        include('view/admin_menu.php');
         break;
-    case 'show_Maintenances':
-        include('view/Maintenances.php');
+    case 'show_product_manager':
+        include('view/product_manager.php');
+        break;
+    case 'show_order_manager':
+        include('view/order_manager.php');
         break;
     case 'logout':
         $_SESSION = array();   // Clear all session data from memory

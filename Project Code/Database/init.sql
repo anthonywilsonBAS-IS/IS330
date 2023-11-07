@@ -1,3 +1,6 @@
+DROP DATABASE IF EXISTS Droneoperations;
+
+
 CREATE DATABASE IF NOT Exists Droneoperations ;
 USE Droneoperations ;
 
@@ -21,7 +24,7 @@ CREATE TABLE Pilots (
     LastName VARCHAR(55),
     SectorID INT,
     CallSign VARCHAR(15),
-    PasswordHash VARCHAR(25),
+    PasswordHash VARCHAR(255),
     FOREIGN KEY (SectorID) REFERENCES Sectors(SectorID)
 );
 
@@ -63,8 +66,8 @@ CREATE TABLE Assignments (
    OrgID INT,
    LocationID INT,
    MissionDate DATE,
-   MissionCompletion BOOLEAN, 
-   MissionCompletionTime TIME,
+   MissionComplete BOOLEAN, 
+   MissionCompletion TIME,
    Notes VARCHAR(255),
    DroneID INT,
    FlightTime TIME,
