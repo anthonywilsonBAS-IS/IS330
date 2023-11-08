@@ -107,21 +107,7 @@
                 <h1>Add New Pilot</h2>
                 <form method="post">
                 <label for="name">Pilots:</label>
-                <input type = "text" class="text" name="name" > </br>
-
-                <label for="team">Assigned Team:</label>
-                    <select id="team" name="team" required>
-                        <?php 
-                            $query = "SELECT TeamID, TeamName FROM Teams";
-                            $stmt = $db->query($query);
-                            $data = $stmt->fetchAll(PDO::FETCH_ASSOC);
-                            foreach ($data as $row) {
-                                echo "<option value='{$row['TeamID']}'>{$row['TeamName']}</option>";
-                            }
-                        ?>
-                    </select></br>
-                    
-
+                <input type = "text" class="text" name="name" > </br>                
                     <label for="type">First Name:</label>
                     <select id="type" name="type" required>
                     </select> </br>
@@ -134,7 +120,7 @@
                     </select> </br>
                     <label for="status">Sectors:</label>
                     <select id="status" name="status" required>
-                    <option value="Military">Military</option>
+                        <option value="Military">Military</option>
                         <option value="Civilian">Civilian</option>
                     </select> </br>
             
