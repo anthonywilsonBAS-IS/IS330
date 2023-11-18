@@ -76,10 +76,6 @@ td, th {
     vertical-align: top;
     text-align: left;
 }
-form {
-
-}
-
 #login_form {
     margin: 1em 0;
 }
@@ -93,4 +89,34 @@ form {
 }
 input.text {
     width: 15em;
+}
+div > .container {
+    margin: 0 auto;
+    background-color: #fff;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-top: 50px;
+    border-radius: 8px;
+}
+div > table {
+    width: 100%;
+    margin-top: 20px;
+    border-collapse: collapse;
+}
+div > table, th, td {
+    border: 1px solid #ddd;
+}
+div > table th, table td {
+    padding: 12px;
+    text-align: left;
+}
+div > table th {
+    background-color: #4CAF50;
+    color: white;
+}
+div > table tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+div > table tr:hover {
+    background-color: #ddd;
 }

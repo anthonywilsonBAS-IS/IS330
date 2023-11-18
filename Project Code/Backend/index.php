@@ -46,11 +46,15 @@ switch($action) {
         $password = filter_input(INPUT_POST, 'password');
         if (is_valid_admin_login($callsign, $password)) {
             $_SESSION['is_valid_admin'] = true;
-         //   $_SESSION['currently_logged-in-user_email'] = true;
-         // $_SESSION['is_valid_admin'] = true;
+            $_SESSION['currently_logged_in_callsign'] = $callsign;
 
-//TODO: exchange email for user id, and store that in the session
-          //  $stmt = $db->query(SELECT * FROM users WHERE email + $email)
+            $stmt = $db->prepare("SELECT Administrator FROM Pilots WHERE CallSign = :callsign"); 
+            $stmt->bindParam(":callsign", $callsign);
+            $stmt->execute();
+
+            $row = $stmt->fetch();
+            $admin = $row["Administrator"];
+            $_SESSION['current_user_admin'] = $admin;
 
             include('view/admin_menu.php');
         } else {
@@ -58,9 +62,12 @@ switch($action) {
             include('view/login.php');
         }
         break;
-        case 'show_admin_menu':
-            include("view/admin_menu.php");
-            break;
+    case 'show_admin_menu':
+        include("view/admin_menu.php");
+        break;
+    case 'show_admin_page':
+        include("view/admin_page.php");
+        break;
     case 'show_drones':
         include("view/drones.php");
         break;

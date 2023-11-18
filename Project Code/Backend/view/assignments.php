@@ -15,7 +15,7 @@
         $flight = $_POST['flight'];
         $pilot = $_POST['pilot'];
  
-        $stmt = $db->prepare("INSERT INTO Assignments (AssignmentName, OrgID, LocationID, MissionDate,MissionComplete, MissionCompletion, Notes, DroneID, FlightTime, PilotsID) VALUES (:name, :org, :loc, :date, :complete, :time, :note, :drone, :flight, :pilot)");
+        $stmt = $db->prepare("INSERT INTO Assignments (AssignmentName, OrgID, LocationID, MissionDate, MissionComplete, MissionCompletion, Notes, DroneID, FlightTime, PilotsID) VALUES (:name, :org, :loc, :date, :complete, :time, :note, :drone, :flight, :pilot)");
  
         $stmt->bindParam(':name', $name);
         $stmt->bindParam(':org', $org);
@@ -32,8 +32,14 @@
  
         echo "You added an assignment successfully";
     }
-    $stmt = $db->query('SELECT  AssignmentName, MissionDate, MissionComplete, MissionCompletion, Notes, FlightTime
-    FROM Assignments ');
+    
+    if(isset($_SESSION['is_valid_admin'])) {
+        $stmt = $db->query("SELECT  AssignmentName, DATE_FORMAT(MissionDate, '%m/%d') AS formatted_date, MissionComplete, DATE_FORMAT(MissionCompletion, '%h:%i %p') AS formatted_time , Notes, FlightTime FROM Assignments");
+          $stmt->execute();
+        } else {
+            throw new Exception('Should not be able to get here if not logged in');
+        }
+
 
 ?>
 <!DOCTYPE html>
@@ -41,38 +47,6 @@
     <head>
         <title>DroneTypes</title>
         <link rel="stylesheet" type="text/css" href="main.css"/>
-        <style>
-        .container {
-            margin: 0 auto;
-            background-color: #fff;
-            padding: 20px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            margin-top: 50px;
-            border-radius: 8px;
-        }
-        table {
-            width: 100%;
-            margin-top: 20px;
-            border-collapse: collapse;
-        }
-        table, th, td {
-            border: 1px solid #ddd;
-        }
-        table th, table td {
-            padding: 12px;
-            text-align: left;
-        }
-        table th {
-            background-color: #4CAF50;
-            color: white;
-        }
-        table tr:nth-child(even) {
-            background-color: #f2f2f2;
-        }
-        table tr:hover {
-            background-color: #ddd;
-        }
-    </style>
     </head>
     <body>
         <header>
@@ -97,9 +71,9 @@
                 <?php while ($row = $stmt->fetch()): ?>
                     <tr>
                         <td><?php echo htmlspecialchars($row['AssignmentName']); ?></td>
-                        <td><?php echo htmlspecialchars($row['MissionDate']); ?></td>
+                        <td><?php echo htmlspecialchars($row['formatted_date']); ?></td>
                         <td><?php echo htmlspecialchars($row['MissionComplete']?"True":"False"); ?></td>
-                        <td><?php echo htmlspecialchars($row['MissionCompletion']); ?></td>
+                        <td><?php echo htmlspecialchars($row['formatted_time']); ?></td>
                         <td><?php echo htmlspecialchars($row['Notes']); ?></td>
                         <td><?php echo htmlspecialchars($row['FlightTime']); ?></td>
                       
@@ -142,7 +116,7 @@
                     </select></br>
 
                     <label for="date">Mission Date:</label>
-                    <input type = "text" class="text" name="date"> </br>
+                    <input type ="date" class="text" name="date"> </br>
 
                     <label for="complete">Is the mission complete?</label>
                     <select id="complete" name="complete" required>
@@ -151,7 +125,7 @@
                     </select></br>
 
                     <label for="time">Mission Completion Time:</label>
-                    <input type = "text" class="text" name="time"> </br>
+                    <input type = "time" class="text" name="time"> </br>
 
                     <label for="note">Notes:</label>
                     <input type = "text" class="text" name="note"> </br>
@@ -168,7 +142,7 @@
                         ?>
                     </select></br>
 
-                    <label for="flight">Flight Time:</label>
+                    <label for="flight">Flight Time Duration:</label>
                     <input type = "text" class="text" name="flight"> </br>
 
                     <label for="pilot">Pilot:</label>

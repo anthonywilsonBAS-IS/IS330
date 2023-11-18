@@ -25,6 +25,7 @@ CREATE TABLE Pilots (
     SectorID INT,
     CallSign VARCHAR(15),
     PasswordHash VARCHAR(255),
+    Administrator BOOLEAN,
     FOREIGN KEY (SectorID) REFERENCES Sectors(SectorID)
 );
 

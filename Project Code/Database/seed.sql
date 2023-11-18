@@ -4,13 +4,13 @@ INSERT INTO Sectors (SectorName)
 VALUES ('Military'),
 	   ('Civilian');
 
-INSERT INTO Pilots (FirstName, LastName, CallSign, PasswordHash, SectorID)
-VALUES ('Nick','Bradshaw', 'Goose', '$2y$10$Uy6NhSyjY2Pvk.RHKT482eP7QKDFe0OEvqh8BPavgmqx9pkqdfyhW', '1'),
-	   ('Ron', 'Kerner', 'Slider', '$2y$10$Uy6NhSyjY2Pvk.RHKT482eP7QKDFe0OEvqh8BPavgmqx9pkqdfyhW', '1'),
-	   ('Tom', 'Kazansky', 'Iceman', '$2y$10$Uy6NhSyjY2Pvk.RHKT482eP7QKDFe0OEvqh8BPavgmqx9pkqdfyhW', '1'),
-	   ('Pete', 'Mitchell', 'Maverick', '$2y$10$Uy6NhSyjY2Pvk.RHKT482eP7QKDFe0OEvqh8BPavgmqx9pkqdfyhW', '2'),
-	   ('Bradley', 'Bradshaw', 'Rooster', '$2y$10$Uy6NhSyjY2Pvk.RHKT482eP7QKDFe0OEvqh8BPavgmqx9pkqdfyhW', '2'),
-	   ('Natasha', 'Trace', 'Phoenix', '$2y$10$Uy6NhSyjY2Pvk.RHKT482eP7QKDFe0OEvqh8BPavgmqx9pkqdfyhW', '2');
+INSERT INTO Pilots (FirstName, LastName, CallSign, PasswordHash, SectorID, Administrator)
+VALUES ('Nick','Bradshaw', 'Goose', '$2y$10$Uy6NhSyjY2Pvk.RHKT482eP7QKDFe0OEvqh8BPavgmqx9pkqdfyhW', '1', '0'),
+	   ('Ron', 'Kerner', 'Slider', '$2y$10$Uy6NhSyjY2Pvk.RHKT482eP7QKDFe0OEvqh8BPavgmqx9pkqdfyhW', '1', '0'),
+	   ('Tom', 'Kazansky', 'Iceman', '$2y$10$Uy6NhSyjY2Pvk.RHKT482eP7QKDFe0OEvqh8BPavgmqx9pkqdfyhW', '1', '0'),
+	   ('Pete', 'Mitchell', 'Maverick', '$2y$10$Uy6NhSyjY2Pvk.RHKT482eP7QKDFe0OEvqh8BPavgmqx9pkqdfyhW', '2', '1'),
+	   ('Bradley', 'Bradshaw', 'Rooster', '$2y$10$Uy6NhSyjY2Pvk.RHKT482eP7QKDFe0OEvqh8BPavgmqx9pkqdfyhW', '2', '0'),
+	   ('Natasha', 'Trace', 'Phoenix', '$2y$10$Uy6NhSyjY2Pvk.RHKT482eP7QKDFe0OEvqh8BPavgmqx9pkqdfyhW', '2', '0');
 
 INSERT INTO Locations (LocationName)
 VALUES ('Area A'),

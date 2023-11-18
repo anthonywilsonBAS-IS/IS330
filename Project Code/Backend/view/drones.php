@@ -39,38 +39,6 @@
     <head>
         <title>DroneTypes</title>
         <link rel="stylesheet" type="text/css" href="main.css"/>
-        <style>
-        .container {
-            margin: 0 auto;
-            background-color: #fff;
-            padding: 20px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            margin-top: 50px;
-            border-radius: 8px;
-        }
-        table {
-            width: 100%;
-            margin-top: 20px;
-            border-collapse: collapse;
-        }
-        table, th, td {
-            border: 1px solid #ddd;
-        }
-        table th, table td {
-            padding: 12px;
-            text-align: left;
-        }
-        table th {
-            background-color: #4CAF50;
-            color: white;
-        }
-        table tr:nth-child(even) {
-            background-color: #f2f2f2;
-        }
-        table tr:hover {
-            background-color: #ddd;
-        }
-    </style>
     </head>
     <body>
         <header>
@@ -106,28 +74,15 @@
          <div class="container">
                 <h1>Add New Drone</h2>
                 <form method="post">
-                <label for="name">Drone Name:</label>
-                <input type = "text" class="text" name="name" > </br>
-                    
+
+                    <label for="name">Drone Name:</label>
+                    <input type = "text" class="text" name="name" > </br>
 
                     <label for="type">Drone Type:</label>
-                    <select id="type" name="type" required>
-                        <option value="Multi-Rotor">Multi-Rotor</option>
-                        <option value="Fixed-Wing">Fixed-Wing</option>
-                        <option value="Single-Rotor">Single-Rotor</option>
-                        <option value="Fixed-Wing VTOL">Fixed-Wing VTOL</option>
-                        <option value="MQ-9 Reaper">MQ-9 Reaper</option>
-                    </select> </br>
+                    <input type = "text" id="type" name="type" required></input> </br>
                     
                     <label for="status"> Drone Category:</label>
-                    <select id="status" name="status" required>
-                        <option value="Agriculture">Agriculture</option>
-                        <option value="Mapping">Mapping</option>
-                        <option value="Enviornmental">Enviornmental</option>
-                        <option value="Delivery">Delivery</option>
-                        <option value="Search and Rescue">Search and Rescue</option>
-                        <option value="Reconnaissance">Reconnaissance</option>
-                    </select> </br>
+                    <input type = "text" id="status" name="status" required></input> </br>
             
                     <input type="submit" name="submit" value="Submit">
                 </form>

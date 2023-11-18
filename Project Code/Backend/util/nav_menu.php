@@ -1,3 +1,11 @@
+<?php
+    $admin = $_SESSION['current_user_admin']; 
+    if($admin == 1){
+        echo "<div style='Text-align:center'>
+        <a href='index.php?action=show_admin_page'>Admin Only</a>
+        </div></br>";
+    }
+?>
 <main>
             <h1>Drone Operations</h1>
             <p><a href="index.php?action=show_admin_menu">Home</a></p>
